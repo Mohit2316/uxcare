@@ -1664,9 +1664,10 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     }
 
     for (i = offsets.length; i--;) {
+      console.log( targets[i], activeTarget , scrollTop , offsets[i], offsets[i+1]);
       activeTarget != targets[i]
-        && scrollTop >= Math.floor(offsets[i])
-        && (!offsets[i+1] || scrollTop <= Math.floor(offsets[i+1]))
+        && (offsets[i] && scrollTop >= Math.floor(offsets[i]))
+        && (!offsets[i+1] || scrollTop < Math.floor(offsets[i+1]))
         && this.activate( targets[i] )
     }
   }
